@@ -46,9 +46,14 @@ public class GameLoop {
 		case "compass":
 			//this needs formatting so that we don't have a very long decimal figure
 			if(ActorManager.getActorManager().getPlayer().hasInventory("Compass")) {
-				System.out.println("The compass isn't giving you a direction, but it reads: "
-						+ Map.getMap().distanceBetweenTwoPoints(ActorManager.getActorManager().getPlayer().getLocation(), ActorManager.getActorManager().getActor("Treasure").getLocation()));
+				if (!ActorManager.getActorManager().getPlayer().hasInventory("Treasure")) {
+					int playerLocation = ActorManager.getActorManager().getPlayer().getLocation();
+					int goalLocation = ActorManager.getActorManager().getActor("Treasure").getLocation();
+					System.out.println("The compass isn't giving you a direction, but it reads: " + Map.getMap().distanceBetweenTwoPoints(playerLocation, goalLocation));
+				}
+				else System.out.println("The compass points to the edge of the swamp.");
 			}
+			else System.out.println("You'll need a compass for that...");
 			break;
 		
 		case "d":

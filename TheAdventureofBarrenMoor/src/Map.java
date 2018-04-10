@@ -127,9 +127,11 @@ public class Map {
 		double distY = pointB[1] - pointA[1];
 		
 		//then calculate that distance and scale it up by 5 to make the swamp seem larger
-		if(distX == 0) distance = distY * 5.0;
+		distance = Math.hypot(distX * 5.0, distY * 5.0);
+		
+		/*if(distX == 0) distance = distY * 5.0;
 		else if (distY == 0) distance = distX * 5.0;
-		else distance = Math.sqrt(distX * distY) * 10.0;
+		else distance = Math.sqrt(distX * distY) * 10.0;*/
 		
 		return distance;
 	}
